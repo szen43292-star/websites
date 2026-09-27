@@ -35,12 +35,13 @@ _src/build.py          renders every page from content.py
 2. Run `python3 _src/build.py` (Python 3.9+, no dependencies).
 3. The HTML pages in this folder are regenerated.
 
-## Hosting
+## Hosting (Netlify)
 
-**Live preview:** https://szen43292-star.github.io/websites/. It redeploys automatically on every push to `main` (see `.github/workflows/deploy-gokul.yml`). This preview copy has `noindex` so it doesn't compete with gokulchildhospital.com in Google. Remove that line from the workflow if GitHub Pages becomes the official host.
+- **Drag and drop:** zip the site files (everything here except `_src/` and this README), then drop the zip onto https://app.netlify.com/drop.
+- **From GitHub:** in Netlify, choose *Add new site → Import an existing project → GitHub → szen43292-star/websites*. The `netlify.toml` at the repo root already sets the folder, so there's nothing to fill in. Every push to `main` then redeploys.
+- **Custom domain:** in Netlify, go to *Domain management → Add a domain* (for example gokulchildhospital.com) and follow the DNS steps.
 
-
-Upload the folder to any static host: the existing web host, Netlify, Vercel or GitHub Pages. `_src/` is only needed for editing and doesn't have to be uploaded.
+It's a plain static site, so any other static host works too.
 
 ## Content to confirm with the hospital
 

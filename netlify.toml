@@ -1,0 +1,26 @@
+# Netlify: deploy the Gokul Children's Hospital site from this repo.
+# The HTML is already generated and committed, so no build step is needed.
+# (To regenerate after editing _src/content.py, run: python3 _src/build.py)
+[build]
+  base = "gokul-childrens-hospital"
+  publish = "."
+  command = ""
+
+# Cache images, CSS and JS for a week; HTML is always revalidated.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Hide the editing sources from the public site
+[[redirects]]
+  from = "/_src/*"
+  to = "/404"
+  status = 404
+  force = true
