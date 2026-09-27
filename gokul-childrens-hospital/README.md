@@ -37,6 +37,9 @@ _src/build.py          renders every page from content.py
 
 ## Hosting
 
+**Live preview:** https://szen43292-star.github.io/websites/. It redeploys automatically on every push to `main` (see `.github/workflows/deploy-gokul.yml`). This preview copy has `noindex` so it doesn't compete with gokulchildhospital.com in Google. Remove that line from the workflow if GitHub Pages becomes the official host.
+
+
 Upload the folder to any static host: the existing web host, Netlify, Vercel or GitHub Pages. `_src/` is only needed for editing and doesn't have to be uploaded.
 
 ## Content to confirm with the hospital
