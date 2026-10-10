@@ -17,7 +17,16 @@
   var nav = document.getElementById("mainNav");
   var toggle = document.getElementById("navToggle");
 
-  function onScroll() { header.classList.toggle("is-scrolled", window.scrollY > 10); }
+  var lastY = window.scrollY;
+  function onScroll() {
+    var y = window.scrollY;
+    header.classList.toggle("is-scrolled", y > 10);
+    // Hide the bar while scrolling down (so it doesn't cover what you're reading), show it on scroll up
+    if (y < 120 || nav.classList.contains("is-open")) header.classList.remove("is-hidden");
+    else if (y > lastY + 4) header.classList.add("is-hidden");
+    else if (y < lastY - 4) header.classList.remove("is-hidden");
+    if (Math.abs(y - lastY) > 4) lastY = y;
+  }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
