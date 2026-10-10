@@ -1,8 +1,7 @@
-# Netlify: deploy the Gokul Children's Hospital site from this repo.
-# The HTML is already generated and committed, so no build step is needed.
-# (To regenerate after editing _src/content.py, run: python3 _src/build.py)
+# Netlify: deploy the Dr. Zende Accident Hospital site from this repo.
+# Plain static HTML/CSS/JS, so there is no build step.
 [build]
-  base = "gokul-childrens-hospital"
+  base = "dr-zende-hospital"
   publish = "."
   command = ""
 
@@ -17,10 +16,3 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-
-# Hide the editing sources from the public site
-[[redirects]]
-  from = "/_src/*"
-  to = "/404"
-  status = 404
-  force = true
