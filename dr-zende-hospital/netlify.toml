@@ -1,0 +1,18 @@
+# Netlify: deploy the Dr. Zende Accident Hospital site.
+# In the Netlify site settings set Base directory = "dr-zende-hospital".
+# Plain static HTML/CSS/JS, so there is no build step.
+[build]
+  publish = "."
+  command = ""
+
+# Cache images, CSS and JS for a week; HTML is always revalidated.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
