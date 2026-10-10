@@ -17,13 +17,16 @@
   var nav = document.getElementById("mainNav");
   var toggle = document.getElementById("navToggle");
 
+  var heroIntro = document.querySelector(".hero-intro");
   var lastY = window.scrollY;
   function onScroll() {
     var y = window.scrollY;
     header.classList.toggle("is-scrolled", y > 10);
-    // Hide the bar while scrolling down (so it doesn't cover what you're reading), show it on scroll up
-    if (y < 120 || nav.classList.contains("is-open")) header.classList.remove("is-hidden");
-    else if (y > lastY + 4) header.classList.add("is-hidden");
+    // Hide the bar while scrolling down (so it doesn't cover what you're reading), show it on scroll up.
+    // Over the hero heading it stays hidden either way, so it never sits on top of the intro text.
+    var heroTextEnd = heroIntro.offsetTop + heroIntro.offsetHeight;
+    if (y <= 10 || nav.classList.contains("is-open")) header.classList.remove("is-hidden");
+    else if (y < heroTextEnd || y > lastY + 4) header.classList.add("is-hidden");
     else if (y < lastY - 4) header.classList.remove("is-hidden");
     if (Math.abs(y - lastY) > 4) lastY = y;
   }
